@@ -8,6 +8,7 @@ const Register = () => {
       handleSubmit,
       errors,
           onRegisterSubmit,
+          navigate
 } = useAuth()
   
 

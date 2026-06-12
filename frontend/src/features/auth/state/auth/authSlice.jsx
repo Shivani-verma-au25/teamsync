@@ -3,6 +3,7 @@ import { currentLoggedEmployee, loginEmployee } from "./authAction";
 
 const authSlice = createSlice({
   name: "auth",
+
   initialState: {
     employee: null,
     isLoading: false,
@@ -13,36 +14,48 @@ const authSlice = createSlice({
       state.employee = action.payload;
       state.isLoading = false;
     },
+
     removeEmployee: (state) => {
       state.employee = null;
       state.isLoading = false;
     },
+  },
 
-    extraReducers: (builder) => {
-      builder
-        .addCase(loginEmployee.pending, (state) => {
-          state.isLoading = true;
-        })
-        .addCase(loginEmployee.fulfilled, (state, action) => {
-          state.employee = action.payload;
-          state.isLoading = false;
-        })
-        .addCase(loginEmployee.rejected, (state) => {
-          state.isLoading = false;
-        })
-        .addCase(currentLoggedEmployee.pending, (state) => {
-          state.isLoading = true;
-        })
-        .addCase(currentLoggedEmployee.fulfilled, (state, action) => {
-          state.employee = action.payload;
-          state.isLoading = false;
-        })
-        .addCase(currentLoggedEmployee.rejected, (state) => {
-          state.isLoading = false;
-        });
-    },
+  // ✅ OUTSIDE reducers
+  extraReducers: (builder) => {
+    builder
+
+      .addCase(loginEmployee.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(loginEmployee.fulfilled, (state, action) => {
+        state.employee = action.payload;
+        state.isLoading = false;
+      })
+
+      .addCase(loginEmployee.rejected, (state) => {
+        state.isLoading = false;
+      })
+
+      // current logged in employee
+
+      .addCase(currentLoggedEmployee.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(currentLoggedEmployee.fulfilled, (state, action) => {
+         console.log(action.payload);
+        state.employee = action.payload;
+        state.isLoading = false;
+      })
+
+      .addCase(currentLoggedEmployee.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 
 export const { addEmplyee, removeEmployee } = authSlice.actions;
+
 export default authSlice.reducer;

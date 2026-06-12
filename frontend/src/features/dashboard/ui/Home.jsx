@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
 
 const Home = () => {
+ 
   return (
     <div>
-      Home
+      this is my dashboard hone page
     </div>
   )
 }

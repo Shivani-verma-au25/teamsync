@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Cloud, ArrowRightToLine } from "lucide-react";
 import {useAuth} from "../../hooks/useAuth";
+import { useDispatch } from 'react-redux'
+import { currentLoggedEmployee } from "../../state/auth/authAction"
 
 const Login = () => {
   const { register, handleSubmit, onLoginSubmit, errors, navigate } = useAuth()
+  
+
 
   return (
     <div className="min-h-screen bg-[#09070F] relative overflow-hidden flex items-center justify-center px-4">
@@ -123,8 +127,8 @@ const Login = () => {
             )}
           </div>
 
-          {/* Checkbox */}
-          <div className="flex items-center gap-3">
+          Checkbox
+          {/* <div className="flex items-center gap-3">
             <input
               type="checkbox"
               className="w-4 h-4 accent-purple-600 rounded"
@@ -132,7 +136,7 @@ const Login = () => {
             />
 
             <p className="text-gray-400 text-sm">Stay signed in</p>
-          </div>
+          </div> */}
 
           {/* Button */}
           <button
