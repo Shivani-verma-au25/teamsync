@@ -5,6 +5,8 @@ import App from './App.jsx'
 import AppRouter from './app/routers/AppRouter'
 import {Provider} from 'react-redux'
 import { store } from './app/store.jsx'
+
+
 createRoot(document.getElementById('root')).render(
   <Provider store={store} >
     <AppRouter/>

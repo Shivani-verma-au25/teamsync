@@ -27,6 +27,7 @@ const authSlice = createSlice({
 
       .addCase(loginEmployee.pending, (state) => {
         state.isLoading = true;
+        state.employee = null;
       })
 
       .addCase(loginEmployee.fulfilled, (state, action) => {
@@ -36,21 +37,28 @@ const authSlice = createSlice({
 
       .addCase(loginEmployee.rejected, (state) => {
         state.isLoading = false;
+        state.employee = null;
       })
 
       // current logged in employee
 
       .addCase(currentLoggedEmployee.pending, (state) => {
         state.isLoading = true;
+        state.employee = null;
       })
 
       .addCase(currentLoggedEmployee.fulfilled, (state, action) => {
-         console.log(action.payload);
+        console.log("FULFILLED RUNNING");
+
         state.employee = action.payload;
         state.isLoading = false;
       })
 
-      .addCase(currentLoggedEmployee.rejected, (state) => {
+      .addCase(currentLoggedEmployee.rejected, (state, action) => {
+        console.log("REJECTED RUNNING");
+
+        console.log(action.payload);
+
         state.isLoading = false;
       });
   },
