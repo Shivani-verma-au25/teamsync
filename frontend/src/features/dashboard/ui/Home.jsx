@@ -7,13 +7,13 @@ const Home = () => {
   const dispatch = useDispatch();
 
  const handleThemeChange =() =>{
-  console.log("clicked");
+  dispatch(toggleTheme())
   
  }
   return (
     <div>
       <h1>this is my dashboard hone page</h1>
-      <button onClick={()=>dispatch(toggleTheme())} >Change theme</button>
+      <button onClick={handleThemeChange} >Change theme</button>
     </div>
   )
 }
